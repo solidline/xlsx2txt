@@ -34,7 +34,7 @@ func WalkSheet(workbook *xlsx.File, columnHeader, flag, id int, sheetFilter stri
 func ReadColumnHeaderRow(row *xlsx.Row) map[int]string {
 	var result = make(map[int]string)
 	for i, cell := range row.Cells {
-		value, _ := cell.String()
+		value := cell.String()
 		if len(value) != 0 {
 			result[i] = value
 		}
@@ -45,7 +45,7 @@ func ReadColumnHeaderRow(row *xlsx.Row) map[int]string {
 func ReadFlagRow(row *xlsx.Row) map[int]bool {
 	var result = make(map[int]bool)
 	for i, cell := range row.Cells {
-		value, _ := cell.String()
+		value := cell.String()
 		if len(value) != 0 {
 			result[i] = true
 		}
@@ -56,7 +56,7 @@ func ReadFlagRow(row *xlsx.Row) map[int]bool {
 func DumpRow(row *xlsx.Row, sheetname string, flags map[int]bool, headers map[int]string, id int) {
 	idcell := ""
 	for i, cell := range row.Cells {
-		value, _ := cell.String()
+		value := cell.String()
 		if i == id - 1 {
 			idcell = value
 			continue
